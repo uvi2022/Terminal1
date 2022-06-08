@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Пользователь\Downloads\Terminal\Release\Terminal.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{123D579D-6F91-4AE8-989F-20D658F1B2D9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>Terminal</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>lib\Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GuardantDotNetApi">
+      <HintPath>lib\GuardantDotNetApi.dll</HintPath>
+    </Reference>
+    <Reference Include="ITLlib">
+      <HintPath>lib\ITLlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayVKP80">
+      <HintPath>lib\PayVKP80.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Quartz">
+      <HintPath>lib\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="log4net">
+      <HintPath>lib\log4net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="XamlGeneratedNamespace\GeneratedInternalTypeHelper.cs" />
+    <Compile Include="UIPSCore\Logging\ILog.cs" />
+    <Compile Include="UIPSCore\Logging\ITerminalEventLog.cs" />
+    <Compile Include="UIPSCore\Logging\Log.cs" />
+    <Compile Include="UIPSCore\Logging\LogConsole.cs" />
+    <Compile Include="UIPSCore\Logging\LogEmpty.cs" />
+    <Compile Include="UIPSCore\Logging\LogHelper.cs" />
+    <Compile Include="UIPSCore\Logging\LogToFunc.cs" />
+    <Compile Include="UIPSCore\Logging\NeedServiceReason.cs" />
+    <Compile Include="UIPSCore\Interior\IInfiniteWorkerTask.cs" />
+    <Compile Include="UIPSCore\Interior\InfiniteWorker.cs" />
+    <Compile Include="UIPSCore\Interior\Exceptions\IExceptionHandler.cs" />
+    <Compile Include="UIPSCore\Interior\Exceptions\TeremDeviceException.cs" />
+    <Compile Include="UIPSCore\Interior\Exceptions\TeremSeriousException.cs" />
+    <Compile Include="UIPSCore\Interior\Exceptions\TeremWebException.cs" />
+    <Compile Include="UIPSCore\Interior\Businesses\BusinessHelper.cs" />
+    <Compile Include="UIPSCore\Interior\Businesses\HelperII.cs" />
+    <Compile Include="UIPSCore\Interior\Businesses\IBusiness.cs" />
+    <Compile Include="UIPSCore\Interior\Businesses\II.cs" />
+    <Compile Include="UIPSCore\Exterior\IUserActionWatcher.cs" />
+    <Compile Include="UIPSCore\Exterior\UserActionWatcher.cs" />
+    <Compile Include="UIPSCore\Hardware\CardPayment\CardPaymentDevice.cs" />
+    <Compile Include="UIPSCore\Hardware\CardPayment\CardPaymentDeviceData.cs" />
+    <Compile Include="UIPSCore\Hardware\CardPayment\FPUHelper.cs" />
+    <Compile Include="UIPSCore\Hardware\CardPayment\HalDispFuncResult.cs" />
+    <Compile Include="UIPSCore\Hardware\CardPayment\ICardPaymentDevice.cs" />
+    <Compile Include="UIPSCore\Hardware\CardPayment\MemoryHelper.cs" />
+    <Compile Include="UIPSCore\Hardware\CardPayment\PilotNtCardTypes.cs" />
+    <Compile Include="UIPSCore\Hardware\CardPayment\PilotNtCardTypesHelpers.cs" />
+    <Compile Include="UIPSCore\Hardware\CardPayment\ReadTrack2Result.cs" />
+    <Compile Include="Terminal\LoggerNV200.cs" />
+    <Compile Include="Terminal\App.cs" />
+    <Compile Include="Terminal\SimpleJob.cs" />
+    <Compile Include="Terminal\Global.cs" />
+    <Compile Include="Terminal\Logger.cs" />
+    <Compile Include="Terminal\Annotations\CanBeNullAttribute.cs" />
+    <Compile Include="Terminal\Annotations\NotNullAttribute.cs" />
+    <Compile Include="Terminal\Annotations\ItemNotNullAttribute.cs" />
+    <Compile Include="Terminal\Annotations\ItemCanBeNullAttribute.cs" />
+    <Compile Include="Terminal\Annotations\StringFormatMethodAttribute.cs" />
+    <Compile Include="Terminal\Annotations\ValueProviderAttribute.cs" />
+    <Compile Include="Terminal\Annotations\InvokerParameterNameAttribute.cs" />
+    <Compile Include="Terminal\Annotations\NotifyPropertyChangedInvocatorAttribute.cs" />
+    <Compile Include="Terminal\Annotations\ContractAnnotationAttribute.cs" />
+    <Compile Include="Terminal\Annotations\LocalizationRequiredAttribute.cs" />
+    <Compile Include="Terminal\Annotations\CannotApplyEqualityOperatorAttribute.cs" />
+    <Compile Include="Terminal\Annotations\BaseTypeRequiredAttribute.cs" />
+    <Compile Include="Terminal\Annotations\UsedImplicitlyAttribute.cs" />
+    <Compile Include="Terminal\Annotations\MeansImplicitUseAttribute.cs" />
+    <Compile Include="Terminal\Annotations\ImplicitUseKindFlags.cs" />
+    <Compile Include="Terminal\Annotations\ImplicitUseTargetFlags.cs" />
+    <Compile Include="Terminal\Annotations\PublicAPIAttribute.cs" />
+    <Compile Include="Terminal\Annotations\InstantHandleAttribute.cs" />
+    <Compile Include="Terminal\Annotations\PureAttribute.cs" />
+    <Compile Include="Terminal\Annotations\MustUseReturnValueAttribute.cs" />
+    <Compile Include="Terminal\Annotations\ProvidesContextAttribute.cs" />
+    <Compile Include="Terminal\Annotations\PathReferenceAttribute.cs" />
+    <Compile Include="Terminal\Annotations\SourceTemplateAttribute.cs" />
+    <Compile Include="Terminal\Annotations\MacroAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcAreaMasterLocationFormatAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcAreaPartialViewLocationFormatAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcAreaViewLocationFormatAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcMasterLocationFormatAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcPartialViewLocationFormatAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcViewLocationFormatAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcActionAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcAreaAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcControllerAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcMasterAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcModelTypeAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcPartialViewAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcSuppressViewErrorAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcDisplayTemplateAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcEditorTemplateAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcTemplateAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcViewAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcViewComponentAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcViewComponentViewAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMvcActionSelectorAttribute.cs" />
+    <Compile Include="Terminal\Annotations\HtmlElementAttributesAttribute.cs" />
+    <Compile Include="Terminal\Annotations\HtmlAttributeValueAttribute.cs" />
+    <Compile Include="Terminal\Annotations\RazorSectionAttribute.cs" />
+    <Compile Include="Terminal\Annotations\CollectionAccessAttribute.cs" />
+    <Compile Include="Terminal\Annotations\CollectionAccessType.cs" />
+    <Compile Include="Terminal\Annotations\AssertionMethodAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AssertionConditionAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AssertionConditionType.cs" />
+    <Compile Include="Terminal\Annotations\TerminatesProgramAttribute.cs" />
+    <Compile Include="Terminal\Annotations\LinqTunnelAttribute.cs" />
+    <Compile Include="Terminal\Annotations\NoEnumerationAttribute.cs" />
+    <Compile Include="Terminal\Annotations\RegexPatternAttribute.cs" />
+    <Compile Include="Terminal\Annotations\NoReorderAttribute.cs" />
+    <Compile Include="Terminal\Annotations\XamlItemsControlAttribute.cs" />
+    <Compile Include="Terminal\Annotations\XamlItemBindingOfItemsControlAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspChildControlTypeAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspDataFieldAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspDataFieldsAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspMethodPropertyAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspRequiredAttributeAttribute.cs" />
+    <Compile Include="Terminal\Annotations\AspTypePropertyAttribute.cs" />
+    <Compile Include="Terminal\Annotations\RazorImportNamespaceAttribute.cs" />
+    <Compile Include="Terminal\Annotations\RazorInjectionAttribute.cs" />
+    <Compile Include="Terminal\Annotations\RazorDirectiveAttribute.cs" />
+    <Compile Include="Terminal\Annotations\RazorHelperCommonAttribute.cs" />
+    <Compile Include="Terminal\Annotations\RazorLayoutAttribute.cs" />
+    <Compile Include="Terminal\Annotations\RazorWriteLiteralMethodAttribute.cs" />
+    <Compile Include="Terminal\Annotations\RazorWriteMethodAttribute.cs" />
+    <Compile Include="Terminal\Annotations\RazorWriteMethodParameterAttribute.cs" />
+    <Compile Include="Terminal\NV200\CCommands.cs" />
+    <Compile Include="Terminal\NV200\ChannelData.cs" />
+    <Compile Include="Terminal\NV200\CHelpers.cs" />
+    <Compile Include="Terminal\NV200\ChangedEventHandler.cs" />
+    <Compile Include="Terminal\NV200\CPayout.cs" />
+    <Compile Include="Terminal\Environment\BanknotesReceiver.cs" />
+    <Compile Include="Terminal\Environment\DatabaseConnection.cs" />
+    <Compile Include="Terminal\Environment\EquipmentBase.cs" />
+    <Compile Include="Terminal\Environment\EquipmentCheker.cs" />
+    <Compile Include="Terminal\Environment\EquipmentItem.cs" />
+    <Compile Include="Terminal\Environment\EquipmentStatus.cs" />
+    <Compile Include="Terminal\Environment\EquipmentStatusList.cs" />
+    <Compile Include="Terminal\Environment\InternetConnection.cs" />
+    <Compile Include="Terminal\Environment\ChangedEventHandler.cs" />
+    <Compile Include="Terminal\Environment\EventedList`1.cs" />
+    <Compile Include="Terminal\Environment\ReceiptPrinter.cs" />
+    <Compile Include="Terminal\Classes\DataExchange.cs" />
+    <Compile Include="Terminal\Classes\INavigation.cs" />
+    <Compile Include="Terminal\Classes\Command.cs" />
+    <Compile Include="Terminal\View\CheckWindow.cs" />
+    <Compile Include="Terminal\View\FrWindow.cs" />
+    <Compile Include="Terminal\View\InformationWindow.cs" />
+    <Compile Include="Terminal\View\CartWindow.cs" />
+    <Compile Include="Terminal\View\PromoWindow.cs" />
+    <Compile Include="Terminal\View\ServiceWindow.cs" />
+    <Compile Include="Terminal\View\MainWindow.cs" />
+    <Compile Include="Terminal\View\PayByBonusWindow.cs" />
+    <Compile Include="Terminal\View\PayByCardWindow.cs" />
+    <Compile Include="Terminal\View\PayByCashWindow.cs" />
+    <Compile Include="Terminal\View\PaymentResult.cs" />
+    <Compile Include="Terminal\View\PaymentWindow.cs" />
+    <Compile Include="Terminal\View\PhoneNumberWindow.cs" />
+    <Compile Include="Terminal\ViewModels\FrViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\InformationViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\CartViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\PromoViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\PaymentResultViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\PayByBonusViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\PayByCardViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\PayByCashViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\PaymentViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\PhoneNumberViewModel.cs" />
+    <Compile Include="Terminal\ViewModels\ViewModelBase.cs" />
+    <Compile Include="Terminal\Properties\Settings.cs" />
+    <Compile Include="Terminal\Properties\Resources.cs" />
+    <Compile Include="Terminal\Services\CardService.cs" />
+    <Compile Include="Terminal\Services\ChangedEventHandler.cs" />
+    <Compile Include="Terminal\Services\PayoutService.cs" />
+    <Compile Include="Terminal\Services\PaymentService.cs" />
+    <Compile Include="Terminal\Services\PrintService.cs" />
+    <Compile Include="Terminal\Services\DataExchangeService.cs" />
+    <Compile Include="Terminal\Services\KeyService.cs" />
+    <Compile Include="Terminal\Services\StorageService.cs" />
+    <Compile Include="Terminal\Services\StorageData.cs" />
+    <Compile Include="Terminal\Services\WindowService.cs" />
+    <Compile Include="Terminal\Interfaces\IHardware.cs" />
+    <Compile Include="Terminal\Converters\NameHairVisibilityConverter.cs" />
+    <Compile Include="Terminal\Converters\NameHairConverter.cs" />
+    <Compile Include="Terminal\Converters\NameConverter.cs" />
+    <Compile Include="Terminal\Converters\ImageAlignmentConverter.cs" />
+    <Compile Include="Terminal\Converters\ImageVisibilityConverter.cs" />
+    <Compile Include="Terminal\Converters\StringNullOrEmptyBoolConverter.cs" />
+    <Compile Include="Terminal\Converters\PriceConverter.cs" />
+    <Compile Include="Terminal\Converters\PaymentTypeConverter.cs" />
+    <Compile Include="Terminal\Converters\DateConverter.cs" />
+    <Compile Include="Terminal\Card\CardPayment\CardAuthorizeResult.cs" />
+    <Compile Include="Terminal\Card\CardPayment\CloseDayResult.cs" />
+    <Compile Include="Terminal\Card\CardPayment\PilotNt.cs" />
+    <Compile Include="Terminal\Card\CardPayment\StatisticsResult.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\fr.png" />
+    <Resource Include="images\logo.png" />
+    <Resource Include="images\logo1.png" />
+    <Resource Include="images\logo2.png" />
+    <Resource Include="images\logolarge.jpg" />
+    <Resource Include="logo.ico" />
+    <Resource Include="logo_round.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Terminal\Properties\Resources.resx" />
+  </ItemGroup>
+  <!--  
+  <ItemGroup>
+    <None Include="bin\Debug\view\mainwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\autoscrolllistboxdictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+-->
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <!-- ??? -->
+  <ItemGroup>
+    <Page Include="view\autoscrolllistboxdictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\cardwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\checkwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\frwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\informationwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\mainwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\paybybonuswindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\paybycardwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\paybycashwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\paymentresult.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\paymentwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\phonenumberwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\promowindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\servicewindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <!-- ??? -->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

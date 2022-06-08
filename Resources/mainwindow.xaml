@@ -1,0 +1,289 @@
+<Window x:Class="Terminal.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Terminal.ViewModels"
+        xmlns:converters="clr-namespace:Terminal.Converters"
+        PreviewMouseDown="OnPreviewMouseDown" KeyDown="MainWindow_OnKeyDown" Title="MainWindow"
+        Height="1024" Width="1280" WindowState="Maximized" WindowStyle="None">
+  <FrameworkElement.DataContext>
+    <viewModels:MainWindowViewModel/>
+  </FrameworkElement.DataContext>
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.xaml"/>
+        <ResourceDictionary Source="AutoScrollListBoxDictionary.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+      <converters:PriceConverter x:Key="PriceConverter"/>
+      <converters:StringNullOrEmptyBoolConverter x:Key="StringNullOrEmptyBoolConverter"/>
+      <converters:ImageVisibilityConverter x:Key="ImageVisibilityConverter"/>
+      <converters:ImageAlignmentConverter x:Key="ImageAlignmentConverter"/>
+      <converters:NameConverter x:Key="NameConverter"/>
+      <converters:NameHairConverter x:Key="NameHairConverter"/>
+      <converters:NameHairVisibilityConverter x:Key="NameHairVisibilityConverter"/>
+      <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <Grid>
+    <FrameworkElement.LayoutTransform>
+      <ScaleTransform ScaleX="{Binding ScaleWidth}" ScaleY="{Binding ScaleHeight}"/>
+    </FrameworkElement.LayoutTransform>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Border Grid.Row="4" Grid.Column="0" CornerRadius="20" Opacity="1" Margin="0"
+            Background="{Binding StatusPanelColor}" Visibility="{Binding ErrorPanelStatus}">
+      <Border Margin="5" Padding="2" Background="White" CornerRadius="20">
+        <Border CornerRadius="20" Background="{Binding StatusPanelColor}">
+          <WrapPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Style="{StaticResource StatusBarLabelStyle}" Content="{Binding StatusBar1}"/>
+            <Label Style="{StaticResource StatusBarLabelStyle}" Content="{Binding StatusBar2}"/>
+            <Label Style="{StaticResource StatusBarLabelStyle}" Content="{Binding StatusBar3}"/>
+            <Label Style="{StaticResource StatusBarLabelStyle}" Content="{Binding StatusBar4}"/>
+          </WrapPanel>
+        </Border>
+      </Border>
+    </Border>
+    <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="0"
+            HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="auto" Height="160"
+            Background="#FFED00"/>
+    <Grid Row="1" Column="0" HorizontalAlignment="Center">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="720"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      <Button Grid.Row="0" Grid.Column="0" Margin="10" Background="#FFED00" BorderThickness="0"
+              Command="{Binding GotoMenuCommand}" CommandParameter="{Binding}">
+        <Image Style="{StaticResource ResImage}" Height="140" Width="auto"/>
+      </Button>
+      <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource FrButtonStyle}" Command="{Binding FrCommand}">ФРАНШИЗА</Button>
+      <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource CartButtonStyle}"
+              Command="{Binding CartCommand}"
+              Visibility="{Binding ShowCart, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="66"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <Image Source="/Images/cart.png" Grid.RowSpan="3" Grid.Column="0"/>
+          <Label Grid.Column="1" Grid.Row="0" Padding="0">КОРЗИНА</Label>
+          <Label Grid.Column="1" Grid.Row="1" FontSize="20" Height="30" VerticalContentAlignment="Center"
+                 Padding="0" Content="{Binding Cart.CountText}"/>
+          <Label Grid.Column="1" Grid.Row="2" FontSize="20" Height="30" VerticalContentAlignment="Center"
+                 Padding="0" Content="{Binding Cart.SumText}"/>
+        </Grid>
+      </Button>
+    </Grid>
+    <Grid x:Name="Hair" Row="3" Style="{StaticResource Hair}"
+          Visibility="{Binding ShowHairLines, Converter={StaticResource BooleanToVisibilityConverter}}">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="280"/>
+        <ColumnDefinition Width="280"/>
+        <ColumnDefinition Width="280"/>
+        <ColumnDefinition Width="280"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource HairText}">
+        Короткие волосы
+        <LineBreak/>
+        до 15 см
+      </TextBlock>
+      <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource HairText}">
+        Средние волосы
+        <LineBreak/>
+        до 30 см
+      </TextBlock>
+      <TextBlock Grid.Row="0" Grid.Column="3" Style="{StaticResource HairText}">
+        Длинные волосы
+        <LineBreak/>
+        до 45 см
+      </TextBlock>
+      <TextBlock Grid.Row="0" Grid.Column="4" Style="{StaticResource HairText}">
+        Очень длинные волосы
+        <LineBreak/>
+        от 45 см
+      </TextBlock>
+      <Line Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Style="{StaticResource HairBorder}"/>
+      <Line Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Style="{StaticResource HairBorder}"/>
+      <Line Grid.Row="0" Grid.RowSpan="2" Grid.Column="4" Style="{StaticResource HairBorder}"/>
+    </Grid>
+    <Grid Row="3" Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 50 0 0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="1130"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      <Button Grid.Column="0" Style="{StaticResource LeftButtonStyle}" IsEnabled="{Binding PreviousPageEnabled}"
+              Command="{Binding PriviousPageCommand}" CommandParameter="{Binding}"/>
+      <Button Grid.Column="2" Style="{StaticResource RightButtonStyle}" IsEnabled="{Binding NextPageEnabled}"
+              Command="{Binding NextPageCommand}" CommandParameter="{Binding}"/>
+      <ListBox x:Name="Lb" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+               ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center"
+               Background="Transparent" ItemsSource="{Binding Buttons}">
+        <ItemsControl.ItemContainerStyle>
+          <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Control.Background" Value="Transparent"/>
+            <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+            <Setter Property="Control.Template">
+              <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                  <ContentPresenter/>
+                </ControlTemplate>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </ItemsControl.ItemContainerStyle>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Button x:Name="Button" Style="{StaticResource OrangeButtonStyle}" Height="{Binding Height}"
+                    Width="{Binding Weight}" Command="{Binding ElementName=Lb, Path=DataContext.ButtonCommand}"
+                    CommandParameter="{Binding}"
+                    VerticalAlignment="{Binding Image, Converter={StaticResource ImageAlignmentConverter}}">
+              <StackPanel>
+                <Border x:Name="ImageBorder" Background="White" CornerRadius="20 20 0 0" Width="296" Height="300"
+                        Visibility="{Binding Image, Converter={StaticResource ImageVisibilityConverter}}">
+                  <Image x:Name="Image" Height="274" Width="auto" VerticalAlignment="Center" Source="{Binding Image}"/>
+                </Border>
+                <Label x:Name="Label" Style="{StaticResource TextSize4}">
+                  <ContentControl.Content>
+                    <TextBlock x:Name="TextBlock" Margin="0 -6" TextWrapping="Wrap" TextAlignment="Center"
+                               Text="{Binding Name, Converter={StaticResource NameConverter}}"/>
+                  </ContentControl.Content>
+                </Label>
+                <Label x:Name="LabelHair" Style="{StaticResource TextSize1}"
+                       Visibility="{Binding Name, Converter={StaticResource NameHairVisibilityConverter}}">
+                  <ContentControl.Content>
+                    <TextBlock x:Name="TextBlockHair" Margin="0 -6" TextWrapping="Wrap" TextAlignment="Center"
+                               Text="{Binding Name, Converter={StaticResource NameHairConverter}}"/>
+                  </ContentControl.Content>
+                </Label>
+                <Label Margin="0 -4" Style="{StaticResource TextSize4}" FontWeight="Bold"
+                       Visibility="{Binding Price, Converter={StaticResource StringNullOrEmptyBoolConverter}}"
+                       Content="{Binding Price, Converter={StaticResource PriceConverter}}"/>
+              </StackPanel>
+            </Button>
+            <DataTemplate.Triggers>
+              <DataTrigger Value="1" Binding="{Binding Type}">
+                <Setter TargetName="Button" Value="{StaticResource MainButtonStyle}" Property="FrameworkElement.Style"/>
+              </DataTrigger>
+              <DataTrigger Value="5" Binding="{Binding Type}">
+                <Setter TargetName="Button" Value="{StaticResource MainButtonStyle}" Property="FrameworkElement.Style"/>
+              </DataTrigger>
+              <DataTrigger Value="260" Binding="{Binding Weight}">
+                <Setter TargetName="Button" Property="FrameworkElement.Margin" Value="10 0 10 10"/>
+              </DataTrigger>
+            </DataTemplate.Triggers>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel Style="{StaticResource MainWrapPanel}"/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+      </ListBox>
+    </Grid>
+    <StackPanel Grid.Row="4" VerticalAlignment="Center">
+      <Button Height="40" Width="300" Style="{StaticResource RedButtonStyle}" Content="НАЗАД" Margin="5"
+              Command="{Binding GotoMenuCommand}" CommandParameter="{Binding }"
+              Visibility="{Binding ShowMenuButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+    </StackPanel>
+    <Grid Row="7" Column="0" Background="#2B2A29">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Border Grid.Column="0">
+        <StackPanel>
+          <Label Content="{Binding InfBlock2}"/>
+        </StackPanel>
+      </Border>
+      <Border Grid.Column="1">
+        <StackPanel>
+          <Label Margin="0" Style="{StaticResource InfBlock1}" HorizontalAlignment="Center"
+                 Content="{Binding InfBlock1}"/>
+          <Label Margin="0" Style="{StaticResource FooterTextStyle}" HorizontalAlignment="Center"
+                 Content="{Binding InfBlock3}"/>
+        </StackPanel>
+      </Border>
+      <Border Grid.Column="2" Grid.Row="0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+          <Label Content="{Binding InfBlock4}"/>
+          <Button Click="Version_Click" x:Name="Version" Background="#2B2A29" Padding="20 10" Foreground="#EFEFEF"
+                  Content="{Binding Version}"/>
+        </StackPanel>
+      </Border>
+    </Grid>
+    <Grid Row="6" Column="0" Background="#2B2A29" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+          Visibility="{Binding ShowMenuButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="1200"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <ListBox x:Name="horizontalListBox" SelectionMode="Extended"
+               Style="{StaticResource ListBoxWithAutoScroll_Horizontal}" Grid.Column="1"
+               ItemsSource="{Binding ButtonsSecond}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <StackPanel>
+              <Button x:Name="Button" Style="{StaticResource SecondButtonStyle}" VerticalAlignment="Top"
+                      Command="{Binding ElementName=horizontalListBox, Path=DataContext.ButtonCommand}"
+                      CommandParameter="{Binding}">
+                <Border x:Name="ImageBorder" Background="Transparent" CornerRadius="20" Padding="10" Width="180"
+                        Height="180">
+                  <StackPanel>
+                    <Image x:Name="Image" Height="104" Width="auto" VerticalAlignment="Top" Source="{Binding ImageInactive}"/>
+                    <Label x:Name="Label" Style="{StaticResource TextSize4}">
+                      <ContentControl.Content>
+                        <TextBlock x:Name="TextBlock" Margin="0 -5" TextWrapping="Wrap" Foreground="#EFEFEF" TextAlignment="Center"
+                                   FontSize="22" Typography.Capitals="AllSmallCaps" Text="{Binding Name}"/>
+                      </ContentControl.Content>
+                    </Label>
+                  </StackPanel>
+                </Border>
+              </Button>
+            </StackPanel>
+            <DataTemplate.Triggers>
+              <DataTrigger Value="true" Binding="{Binding IsActive}">
+                <Setter TargetName="Button" Value="{StaticResource MainButtonActiveStyle}"
+                        Property="FrameworkElement.Style"/>
+              </DataTrigger>
+            </DataTemplate.Triggers>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel Margin="70, 10"/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+      </ListBox>
+    </Grid>
+  </Grid>
+</Window>

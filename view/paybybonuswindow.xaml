@@ -1,0 +1,122 @@
+<Window x:Class="Terminal.View.PayByBonusWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Terminal.ViewModels"
+        PreviewMouseDown="OnPreviewMouseDown" Loaded="OnPayByCashLoaded" Closed="OnPayByCashClosed"
+        WindowState="Maximized" WindowStyle="None" AllowsTransparency="true">
+<!--    
+  <FrameworkElement.DataContext>
+    <viewModels:PayByBonusViewModel/>
+  </FrameworkElement.DataContext>
+-->    
+  <Control.Background>
+    <SolidColorBrush Opacity="0.5" Color="Black"/>
+  </Control.Background>
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <Border Background="#FEFEFE" CornerRadius="20" Height="550" Width="900">
+    <DockPanel>
+      <Popup Placement="Center" StaysOpen="true" AllowsTransparency="true" IsOpen="{Binding IsWrongCode}">
+        <StackPanel>
+          <TextBlock Style="{StaticResource TbTextSize2}" Text="{Binding ErrorText}"/>
+          <Button Width="350" Margin="0,20,0,0" Style="{StaticResource RedButtonStyle}"
+                  Command="{Binding RepeatCommand}" Content="{Binding ErrorButtonText}"/>
+        </StackPanel>
+      </Popup>
+      <Grid x:Name="MainGrid" Margin="5" Visibility="{Binding IsMainGridVisible}">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+          <Border Margin="5" Padding="6" Background="White" CornerRadius="20" BorderBrush="#D9DADA"
+                  BorderThickness="5">
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                <TextBlock Style="{StaticResource TbTextSize2}" Text="{Binding Line1}"/>
+                <Label Style="{StaticResource TextSize2}" Content="{Binding Line2}"/>
+                <TextBox Style="{StaticResource TextBoxStyle1}" Text="{Binding SmsCode}">
+                  <FrameworkElement.Resources>
+                    <Style TargetType="{x:Type Border}">
+                      <Setter Property="Border.CornerRadius" Value="10"/>
+                    </Style>
+                  </FrameworkElement.Resources>
+                </TextBox>
+              </StackPanel>
+              <Canvas Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Rectangle Width="390" Height="80" Style="{StaticResource PhoneBackground}"/>
+                <Rectangle Width="390" Height="80" Margin="0 160" Style="{StaticResource PhoneBackground}"/>
+                <Line X1="0" X2="390" Y1="80" Y2="80" Style="{StaticResource PhoneBorder}"/>
+                <Line X1="0" X2="390" Y1="160" Y2="160" Style="{StaticResource PhoneBorder}"/>
+                <Line X1="0" X2="390" Y1="240" Y2="240" Style="{StaticResource PhoneBorder}"/>
+                <Line X1="130" X2="130" Y1="0" Y2="320" Style="{StaticResource PhoneBorder}"/>
+                <Line X1="260" X2="260" Y1="0" Y2="320" Style="{StaticResource PhoneBorder}"/>
+              </Canvas>
+              <Grid Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*"/>
+                  <RowDefinition Height="*"/>
+                  <RowDefinition Height="*"/>
+                  <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource PhoneButtonStyle}" CommandParameter="1"
+                        Command="{Binding AddDigitCommand}">1</Button>
+                <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource PhoneButtonStyle}" CommandParameter="2"
+                        Command="{Binding AddDigitCommand}">2</Button>
+                <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource PhoneButtonStyle}" CommandParameter="3"
+                        Command="{Binding AddDigitCommand}">3</Button>
+                <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource PhoneButtonStyle}" CommandParameter="4"
+                        Command="{Binding AddDigitCommand}">4</Button>
+                <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource PhoneButtonStyle}" CommandParameter="5"
+                        Command="{Binding AddDigitCommand}">5</Button>
+                <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource PhoneButtonStyle}" CommandParameter="6"
+                        Command="{Binding AddDigitCommand}">6</Button>
+                <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource PhoneButtonStyle}" CommandParameter="7"
+                        Command="{Binding AddDigitCommand}">7</Button>
+                <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource PhoneButtonStyle}" CommandParameter="8"
+                        Command="{Binding AddDigitCommand}">8</Button>
+                <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource PhoneButtonStyle}" CommandParameter="9"
+                        Command="{Binding AddDigitCommand}">9</Button>
+                <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource PhoneButtonStyle}" CommandParameter="0"
+                        Command="{Binding AddDigitCommand}">0</Button>
+                <Button Grid.Row="3" Grid.Column="0" Style="{StaticResource PhoneButtonStyle}" CommandParameter="C"
+                        Command="{Binding AddDigitCommand}">
+                  <Canvas>
+                    <Polygon StrokeThickness="3" Stroke="#2B2A29" Points="-48,0 -24,-25 24,-25 24,25 -24,25"/>
+                    <Line X1="-18" X2="18" Y1="-18" Y2="18" StrokeThickness="6" Stroke="#E31E24"/>
+                    <Line X1="18" X2="-18" Y1="-18" Y2="18" StrokeThickness="6" Stroke="#E31E24"/>
+                  </Canvas>
+                </Button>
+              </Grid>
+            </Grid>
+          </Border>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,40,0,0">
+          <Button Style="{StaticResource RedButtonStyle}" Command="{Binding CancelCommand}"
+                  CommandParameter="{Binding}" Content="{Binding CancelButtonText}"/>
+          <Button Style="{StaticResource RedButtonStyle}" Command="{Binding ConfirmCommand}"
+                  CommandParameter="{Binding}" Content="{Binding ConfirmButtonText}"/>
+          <MediaElement Width="0" Height="0" Source="Wave/07.wav" UnloadedBehavior="Close" LoadedBehavior="Play"
+                        IsMuted="{Binding PlayMedia}"/>
+        </StackPanel>
+      </Grid>
+    </DockPanel>
+  </Border>
+</Window>

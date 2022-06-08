@@ -1,0 +1,200 @@
+<Window x:Class="Terminal.View.PaymentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Terminal.ViewModels"
+        PreviewMouseDown="OnPreviewMouseDown" Loaded="PaymentWindow_OnLoaded"
+        Closing="PaymentWindow_OnClosing" Height="1024" Width="1280" WindowState="Maximized"
+        WindowStyle="None">
+  <!--
+  <FrameworkElement.DataContext>
+    <viewModels:PaymentViewModel/>
+  </FrameworkElement.DataContext>
+-->    
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+      <Style x:Key="StyleLine1" TargetType="{x:Type Label}">
+        <Setter Property="Control.FontFamily" Value="Calibri"/>
+        <Setter Property="Control.FontSize" Value="32"/>
+        <Setter Property="Control.FontWeight" Value="Bold"/>
+        <Setter Property="FrameworkElement.HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Control.Background" Value="#E9E9E9"/>
+        <Setter Property="Typography.Capitals" Value="AllSmallCaps"/>
+      </Style>
+      <Style x:Key="StyleLine2" TargetType="{x:Type Label}">
+        <Setter Property="Control.FontFamily" Value="Calibri"/>
+        <Setter Property="Control.FontSize" Value="24"/>
+        <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="FrameworkElement.Margin" Value="0,20"/>
+      </Style>
+      <Style x:Key="StyleLine3" TargetType="{x:Type Label}">
+        <Setter Property="Control.FontFamily" Value="Calibri"/>
+        <Setter Property="Control.FontSize" Value="32"/>
+        <Setter Property="Control.FontWeight" Value="Bold"/>
+        <Setter Property="FrameworkElement.Margin" Value="0,12"/>
+        <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+      </Style>
+      <Style x:Key="StyleLine4" TargetType="{x:Type Label}">
+        <Setter Property="Control.FontFamily" Value="Calibri"/>
+        <Setter Property="Control.FontSize" Value="32"/>
+        <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+        <Setter Property="Control.Foreground" Value="#E31E24"/>
+        <Setter Property="FrameworkElement.Margin" Value="0,20"/>
+      </Style>
+      <Style x:Key="StyleLine5" TargetType="{x:Type Label}" BasedOn="{StaticResource StyleLine1}">
+        <Setter Property="Control.FontSize" Value="56"/>
+      </Style>
+      <Style x:Key="StyleLine6" TargetType="{x:Type Label}" BasedOn="{StaticResource StyleLine4}"/>
+      <Style TargetType="{x:Type Button}">
+        <Setter Property="FrameworkElement.Width" Value="200"/>
+        <Setter Property="FrameworkElement.Height" Value="75"/>
+        <Setter Property="FrameworkElement.Margin" Value="10"/>
+        <Setter Property="Control.Background" Value="Orange"/>
+      </Style>
+      <Style TargetType="{x:Type Label}">
+        <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
+      </Style>
+      <Style x:Key="ButtonTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="TextBlock.FontSize" Value="24"/>
+        <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+        <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+        <Setter Property="FrameworkElement.VerticalAlignment" Value="Center"/>
+        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+      </Style>
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+    </Grid.ColumnDefinitions>
+    <Grid Row="0" Visibility="Collapsed">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <MediaElement x:Name="MediaElement" Source="Wave/02.wav" UnloadedBehavior="Manual" LoadedBehavior="Manual"/>
+      <Image Source="/images/logo.png" MaxWidth="400" Grid.Column="0" HorizontalAlignment="Left"/>
+      <Label Grid.Column="1" Style="{StaticResource InfBlock1}" Content="{Binding ServiceName}"/>
+    </Grid>
+    <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="0"
+            HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="auto" Height="160"
+            Background="#FFED00"/>
+    <Grid Row="1" Column="0" HorizontalAlignment="Center">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="720"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      <Image Grid.Row="0" Grid.Column="0" Style="{StaticResource ResImage}" Margin="10"/>
+      <Button Grid.Row="0" Grid.Column="1" Height="100" Width="300" Style="{StaticResource OrangeButtonStyle}"
+              Command="{Binding GotoMenuCommand}" CommandParameter="{Binding}">
+        <TextBlock TextAlignment="Center" FontWeight="SemiBold">
+          Назад
+          <LineBreak/>
+          к выбору услуг
+        </TextBlock>
+      </Button>
+    </Grid>
+    <StackPanel Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+      <Label Style="{StaticResource StyleLine1}" Content="{Binding Line1}"/>
+      <Label Style="{StaticResource StyleLine2}" Content="{Binding Line2}"/>
+      <Label Style="{StaticResource StyleLine3}" Content="{Binding ServiceName}"/>
+      <Label Style="{StaticResource StyleLine4}" Content="{Binding Bonuses}"/>
+    </StackPanel>
+    <Label Grid.Row="3" Style="{StaticResource StyleLine5}" Content="{Binding Line5}"/>
+    <Label Grid.Row="4" Style="{StaticResource StyleLine3}" Content="Выберите способ оплаты:"
+           Visibility="{Binding PaymentVisibility, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+    <Label Grid.Row="4" Style="{StaticResource StyleLine3}"
+           Content="Проверьте правильность выбранных Вами Услуг"
+           Visibility="{Binding PaymentVisibilityInverse, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+    <WrapPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Visibility="{Binding PaymentVisibility, Converter={StaticResource BooleanToVisibilityConverter}}">
+      <Button PreviewMouseDown="OnButtonClick" Height="140" Width="300"
+              Style="{StaticResource YellowButtonStyle}" Command="{Binding PayByBonusCommand}"
+              CommandParameter="{Binding}" IsEnabled="{Binding CanPayByBonuses}">
+        <TextBlock Style="{StaticResource ButtonTextBlockStyle}" Text="{Binding PayByBonusButtonText}"/>
+      </Button>
+      <Button PreviewMouseDown="OnButtonClick" Height="140" Width="300"
+              Style="{StaticResource YellowButtonStyle}" Command="{Binding PayByCardCommand}"
+              CommandParameter="{Binding}" IsEnabled="{Binding CanPayByCard}">
+        <TextBlock Style="{StaticResource ButtonTextBlockStyle}" Text="{Binding PayByCardButtonText}"/>
+      </Button>
+      <Button PreviewMouseDown="OnButtonClick" Height="140" Width="300"
+              Style="{StaticResource YellowButtonStyle}" Command="{Binding PayByCashCommand}"
+              CommandParameter="{Binding}" IsEnabled="{Binding CanPayByCash}">
+        <TextBlock Style="{StaticResource ButtonTextBlockStyle}" Text="{Binding PayByCashButtonText}"/>
+      </Button>
+    </WrapPanel>
+    <WrapPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Visibility="{Binding PaymentVisibilityInverse, Converter={StaticResource BooleanToVisibilityConverter}}">
+      <Button Height="140" Width="300" Style="{StaticResource YellowButtonStyle}"
+              Command="{Binding GoToCartCommand}" CommandParameter="{Binding}">
+        <TextBlock Style="{StaticResource ButtonTextBlockStyle}" Text="{Binding CartButtonText}"/>
+      </Button>
+      <Button Height="140" Width="300" Style="{StaticResource YellowButtonStyle}"
+              Command="{Binding GoToPaymentCommand}" CommandParameter="{Binding}">
+        <TextBlock Style="{StaticResource ButtonTextBlockStyle}" Text="{Binding PaymentButtonText}"/>
+      </Button>
+    </WrapPanel>
+    <Grid Row="6" Width="1280">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="1080"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Button Grid.Column="1" Height="100" Width="300" Margin="0 10 0 10" HorizontalAlignment="Center"
+              FontWeight="SemiBold" Style="{StaticResource OrangeButtonStyle}"
+              Command="{Binding GotoPreviousPageCommand}" CommandParameter="{Binding}">
+        <TextBlock TextAlignment="Center" FontWeight="SemiBold">
+          Назад
+          <LineBreak/>
+          к вводу телефона
+        </TextBlock>
+      </Button>
+    </Grid>
+    <Grid Row="7" Column="0" Background="#2B2A29">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Border Grid.Column="0">
+        <StackPanel>
+          <Label Content="{Binding InfBlock2}"/>
+        </StackPanel>
+      </Border>
+      <Border Grid.Column="1">
+        <StackPanel>
+          <Label Margin="0" Style="{StaticResource InfBlock1}" HorizontalAlignment="Center"
+                 Content="{Binding InfBlock1}"/>
+          <Label Style="{StaticResource FooterTextStyle}" HorizontalAlignment="Center" Content="{Binding InfBlock3}"/>
+        </StackPanel>
+      </Border>
+      <Border Grid.Column="2" Grid.Row="0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+          <Label Content="{Binding InfBlock4}"/>
+        </StackPanel>
+      </Border>
+    </Grid>
+  </Grid>
+</Window>

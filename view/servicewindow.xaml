@@ -1,0 +1,84 @@
+<Window x:Class="Terminal.View.ServiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Terminal.View"
+        Loaded="OnWindowLoaded" Title="ServiceWindow" Height="600" Width="800" FontSize="15">
+  <Grid>
+    <TabControl>
+      <TabItem Header="At a glance">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Grid Column="1" Row="1">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0"/>
+            <StackPanel Grid.Column="1"/>
+          </Grid>
+        </Grid>
+      </TabItem>
+      <TabItem Header="Банк">
+        <Label>
+          <Button Click="OnBankClick" Width="200" Height="50" Margin="25" Content="Сверка с банком"/>
+        </Label>
+      </TabItem>
+      <TabItem Selector.Selected="TabItem_NV200_Selected" x:Name="TabItem_NV200" Header="Купюроприемник">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="271*"/>
+            <ColumnDefinition Width="33*"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="3">
+            <Button Click="OnPayoutResetClick" Width="200" Height="50" Margin="25">Перезагрузка</Button>
+          </StackPanel>
+          <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
+            Работа с купюроприемником
+          </Label>
+          <TextBox x:Name="NV200Log" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"
+                   TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Stretch"/>
+        </Grid>
+      </TabItem>
+      <TabItem Header="Инкассация" IsSelected="true">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">Инкассация</Label>
+          <Label Grid.Column="2" Grid.Row="0">Отчеты</Label>
+          <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Button Click="OnPrintClick" Width="200" Height="50" Margin="25">Печать</Button>
+            <Button Click="OnIncasClick" Width="200" Height="50" Margin="0 25">Инкассация</Button>
+          </StackPanel>
+          <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" Margin="25,25,-25,25">
+            <Label>Ячеек свободно:</Label>
+          </StackPanel>
+          <TextBox x:Name="PayoutInfo" Grid.Column="0" Grid.Row="1" Margin="25" BorderThickness="0"
+                   Grid.ColumnSpan="2"/>
+        </Grid>
+      </TabItem>
+    </TabControl>
+  </Grid>
+</Window>

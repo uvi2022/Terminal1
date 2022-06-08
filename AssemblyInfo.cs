@@ -1,0 +1,41 @@
+﻿using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Resources;
+
+// ??? [assembly: Extension]
+[assembly: AssemblyTitle("Terminal")]
+[assembly: AssemblyDescription("Програмное обеспечения для работы Терминалов оплаты")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("ООО SS")]
+[assembly: AssemblyProduct("Terminal")]
+[assembly: AssemblyCopyright("SS ©2022")]
+[assembly: AssemblyTrademark("")]
+[assembly: ComVisible(false)]
+[assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("ru")]
+[assembly: AssemblyAssociatedContentFile("environment/statuses.txt")]
+[assembly: AssemblyAssociatedContentFile("images/cart.png")]
+[assembly: AssemblyAssociatedContentFile("images/e1.jpg")]
+[assembly: AssemblyAssociatedContentFile("images/e1.png")]
+[assembly: AssemblyAssociatedContentFile("images/e1_white.png")]
+[assembly: AssemblyAssociatedContentFile("images/logo.bmp")]
+[assembly: AssemblyAssociatedContentFile("images/frinfo.jpg")]
+[assembly: AssemblyAssociatedContentFile("images/shop.png")]
+[assembly: AssemblyAssociatedContentFile("images/shop_1.png")]
+[assembly: AssemblyAssociatedContentFile("json/storage.json")]
+[assembly: AssemblyAssociatedContentFile("wave/01.wav")]
+[assembly: AssemblyAssociatedContentFile("wave/02%2001.wav")]
+[assembly: AssemblyAssociatedContentFile("wave/02.wav")]
+[assembly: AssemblyAssociatedContentFile("wave/03.wav")]
+[assembly: AssemblyAssociatedContentFile("wave/04.wav")]
+[assembly: AssemblyAssociatedContentFile("wave/05.wav")]
+[assembly: AssemblyAssociatedContentFile("wave/06.wav")]
+[assembly: AssemblyAssociatedContentFile("wave/07.wav")]
+[assembly: AssemblyAssociatedContentFile("wave/08.wav")]
+[assembly: AssemblyAssociatedContentFile("wave/09.wav")]
+[assembly: AssemblyAssociatedContentFile("wave/10.wav")]
+[assembly: AssemblyVersion("1.0.0.0")]
